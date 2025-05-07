@@ -1,0 +1,23 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form mat-elevation-z4">
+
+  <h2>Créer un compte</h2>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nom d'utilisateur</mat-label>
+    <input matInput formControlName="username" placeholder="Entrez votre nom" />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email" placeholder="Entrez votre email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Mot de passe</mat-label>
+    <input matInput formControlName="password" type="password" placeholder="Entrez un mot de passe" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+    S'inscrire
+  </button>
+
+</form>

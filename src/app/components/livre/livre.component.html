@@ -1,0 +1,25 @@
+<h2>Gestion des livres</h2>
+
+<form (ngSubmit)="ajouterLivre()">
+  <input [(ngModel)]="nouveauLivre.titre" name="titre" placeholder="Titre" required />
+  <input [(ngModel)]="nouveauLivre.auteur" name="auteur" placeholder="Auteur" required />
+  <input [(ngModel)]="nouveauLivre.description" name="description" placeholder="description" required />
+  <button type="submit">Ajouter</button>
+</form>
+
+<ul>
+  <li *ngFor="let livre of livres">
+    <ng-container *ngIf="livreEnEdition?.id !== livre.id; else editForm">
+      <strong>{{ livre.titre }}</strong> - {{ livre.auteur }}
+      <button (click)="modifierLivre(livre)">Modifier</button>
+      <button (click)="supprimerLivre(livre.id!)">Supprimer</button>
+    </ng-container>
+
+    <ng-template #editForm>
+      <input [(ngModel)]="livreEnEdition?.titre" />
+      <input [(ngModel)]="livreEnEdition?.auteur"/>
+      <input [(ngModel)]="livreEnEdition?.description"/>
+      <button (click)="validerModification()">Valider</button>
+    </ng-template>
+  </li>
+</ul>
